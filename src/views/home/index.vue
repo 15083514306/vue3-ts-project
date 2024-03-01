@@ -33,7 +33,7 @@ import { Icommon, Home } from '@/interfaces'
 const $bus:any = inject('$bus');
 
 //----------------form-----------------
-let formData = ref<Icommon.IAny>({name:'张三'})
+let formData = ref<Icommon.IAny>({name:'张三niubi'})
 //查询
 const onSuccess  = ()=>{
   console.log('查询',formData)
