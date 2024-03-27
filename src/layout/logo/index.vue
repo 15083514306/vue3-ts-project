@@ -1,18 +1,30 @@
 <template>
-  <div class="logo" @click="goHome">
-    <img :src="setting.logo" alt="logo" />
+  <div
+    class="logo"
+    @click="goHome"
+  >
+    <img
+      :src="setting.logo"
+      alt="logo"
+    >
     <span>{{ setting.title }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-import setting from '@/setting.ts'
-import { useRouter } from 'vue-router'
+import setting from "@/setting.ts";
+import { useRouter } from "vue-router";
 
-const router = useRouter()
+const router = useRouter();
 const goHome = () => {
-  router.push('/home')
-}
+  router.push("/home");
+};
+</script>
+
+<script lang="ts">
+export default {
+  name: "Logo",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -48,9 +60,3 @@ const goHome = () => {
   }
 }
 </style>
-
-<script lang="ts">
-export default {
-  name: 'logo',
-}
-</script>

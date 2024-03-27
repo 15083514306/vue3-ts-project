@@ -1,7 +1,7 @@
 // 被引入的文件要不想被编译出文件前面命名加下划线
-$color:#666 !default;
+$color: #666 !default;
 
-@function number($a){
+@function number($a) {
   @return 1;
 }
 

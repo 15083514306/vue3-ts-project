@@ -1,20 +1,29 @@
 <template>
-  <el-header class="layout_tabbar" :class="{ isFold: settingStore.isFold }">
+  <ElHeader
+    class="layout_tabbar"
+    :class="{ isFold: settingStore.isFold }"
+  >
     <div class="left">
-      <breadcrumb></breadcrumb>
+      <Breadcrumb />
     </div>
     <div class="right">
-      <setting></setting>
+      <Setting />
     </div>
-  </el-header>
+  </ElHeader>
 </template>
 
 <script lang="ts" setup>
-import breadcrumb from './breadcrumb/index.vue'
-import setting from './setting/index.vue'
-import useSettingStore from '@/store/modules/setting'
+import breadcrumb from "./breadcrumb/index.vue";
+import setting from "./setting/index.vue";
+import useSettingStore from "@/store/modules/setting";
 
-const settingStore = useSettingStore()
+const settingStore = useSettingStore();
+</script>
+
+<script lang="ts">
+export default {
+  name: "Tabbar",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -45,9 +54,3 @@ const settingStore = useSettingStore()
   }
 }
 </style>
-
-<script lang="ts">
-export default {
-  name: 'tabbar',
-}
-</script>

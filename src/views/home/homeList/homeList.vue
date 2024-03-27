@@ -1,9 +1,5 @@
 <!-- Child.vue -->
-<script lang="ts" setup>
-import {defineModel, onMounted } from 'vue'
-
-
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div>list</div>

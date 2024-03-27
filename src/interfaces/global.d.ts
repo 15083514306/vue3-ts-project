@@ -1,3 +1,6 @@
-interface IAny {
-  [s:string]:any
-}
+// export {};
+// declare global {
+//   interface IAny {
+//     [s: string]: any;
+//   }
+// }

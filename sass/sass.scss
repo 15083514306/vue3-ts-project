@@ -1,5 +1,5 @@
-@use 'sass:math';
-@use '../sass/transfer';
+@use "sass:math";
+@use "../sass/transfer";
 @include transfer.c-mixin();
 
 /* 
@@ -42,8 +42,8 @@ $color-map: (
   color3: #333,
 );
 $font: (
-  key1: 'sdufihue',
-  key2: 'sdbfiebif',
+  key1: "sdufihue",
+  key2: "sdbfiebif",
 );
 
 .container {
@@ -60,7 +60,7 @@ $color1: skyblue;
 $color1: #666 !default;
 
 // 导入
-@import 'foo';
+@import "foo";
 
 .foo {
   color: $color;
@@ -169,8 +169,8 @@ $height: 100px;
 }
 
 // 插值语句#{}
-$author: 'peter';
-$name1: 'font';
+$author: "peter";
+$name1: "font";
 $color1: color;
 $font-size: 300px;
 $line-height: 100px;
@@ -181,7 +181,7 @@ $line-height: 100px;
 */
 .insert {
   // font: $font-size/$line-height "微软雅黑"; //参数出现运算
-  #{$name1}: #{$font-size}/#{$line-height} '微软雅黑'; //所以引入插值
+  #{$name1}: #{$font-size}/#{$line-height} "微软雅黑"; //所以引入插值
   #{$color1}: red;
 }
 

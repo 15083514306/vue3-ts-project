@@ -1,8 +1,11 @@
 <template>
-  <el-aside class="slider-container" :class="{ isFold: settingStore.isFold }">
-    <el-scrollbar>
-      <Logo></Logo>
-      <el-menu
+  <ElAside
+    class="slider-container"
+    :class="{ isFold: settingStore.isFold }"
+  >
+    <ElScrollbar>
+      <Logo />
+      <ElMenu
         class="menu-container"
         background-color="#001529"
         text-color="white"
@@ -11,22 +14,28 @@
         router
       >
         <!-- 以上的router表示启用该模式会在激活导航时以 index 作为 path 进行路由跳转 -->
-        <Menu :menu-list="menuRoutesList"></Menu>
-      </el-menu>
-    </el-scrollbar>
-  </el-aside>
+        <Menu :menu-list="menuRoutesList" />
+      </ElMenu>
+    </ElScrollbar>
+  </ElAside>
 </template>
 
 <script setup lang="ts">
-import Logo from '@/layout/logo/index.vue'
-import Menu from '@/layout/menu/index.vue'
+import Logo from "@/layout/logo/index.vue";
+import Menu from "@/layout/menu/index.vue";
 
-import useUserStore from '@/store/modules/user'
-import useSettingStore from '@/store/modules/setting'
+import useUserStore from "@/store/modules/user";
+import useSettingStore from "@/store/modules/setting";
 
-let userStore = useUserStore()
-let settingStore = useSettingStore()
-let menuRoutesList = userStore.menuRoutes
+let userStore = useUserStore();
+let settingStore = useSettingStore();
+let menuRoutesList = userStore.menuRoutes;
+</script>
+
+<script lang="ts">
+export default {
+  name: "Slider",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -44,9 +53,3 @@ let menuRoutesList = userStore.menuRoutes
   }
 }
 </style>
-
-<script lang="ts">
-export default {
-  name: 'slider',
-}
-</script>

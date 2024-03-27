@@ -1,10 +1,10 @@
-import { createPinia } from 'pinia'
+import { createPinia } from "pinia";
 
-const pinia = createPinia()
+const pinia = createPinia();
 function SecretPiniaPlugin() {
-  return { secret: 'the cake is a lie' }
+  return { secret: "the cake is a lie" };
 }
 
-pinia.use(SecretPiniaPlugin)
+pinia.use(SecretPiniaPlugin);
 
-export default pinia
+export default pinia;

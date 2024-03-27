@@ -1,157 +1,157 @@
 // 公共常量路由
 export const constantRoutes = [
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/index.vue'),
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/login/index.vue"),
     meta: {
-      title: '用户登录',
+      title: "用户登录",
       hidden: true,
-      icon: '',
+      icon: "",
     },
   },
   {
-    path: '/',
-    name: 'layout',
-    component: () => import('@/layout/index.vue'),
+    path: "/",
+    name: "layout",
+    component: () => import("@/layout/index.vue"),
     meta: {
-      title: '',
+      title: "",
       hidden: false,
     },
-    redirect: '/home',
+    redirect: "/home",
     children: [
       {
-        path: '/home',
-        component: () => import('@/views/home/index.vue'),
+        path: "/home",
+        component: () => import("@/views/home/index.vue"),
         meta: {
-          title: '首页',
+          title: "首页",
           hidden: false,
-          icon: 'HomeFilled',
+          icon: "HomeFilled",
         },
       },
     ],
   },
   {
-    path: '/screen',
-    component: () => import('@/views/screen/index.vue'),
-    name: 'screen',
+    path: "/screen",
+    component: () => import("@/views/screen/index.vue"),
+    name: "screen",
     meta: {
-      title: '数据大屏',
+      title: "数据大屏",
       hidden: false,
-      icon: 'Platform',
+      icon: "Platform",
     },
   },
   {
-    path: '/404',
-    name: '404',
-    component: () => import('@/views/404/index.vue'),
+    path: "/404",
+    name: "404",
+    component: () => import("@/views/404/index.vue"),
     meta: {
-      title: '404',
+      title: "404",
       hidden: true,
-      icon: '',
+      icon: "",
     },
   },
-]
+];
 
 // 异步路由
 export const asyncRoutes = [
   {
-    path: '/acl',
-    component: () => import('@/layout/index.vue'),
-    name: 'acl',
+    path: "/acl",
+    component: () => import("@/layout/index.vue"),
+    name: "acl",
     meta: {
-      title: '权限管理',
-      icon: 'Lock',
+      title: "权限管理",
+      icon: "Lock",
       hidden: false,
     },
-    redirect: '/acl/user',
+    redirect: "/acl/user",
     children: [
       {
-        path: '/acl/user',
-        component: () => import('@/views/acl/user/index.vue'),
-        name: 'user',
+        path: "/acl/user",
+        component: () => import("@/views/acl/user/index.vue"),
+        name: "user",
         meta: {
-          title: '用户管理',
-          icon: 'User',
+          title: "用户管理",
+          icon: "User",
           hidden: false,
         },
       },
       {
-        path: '/acl/role',
-        component: () => import('@/views/acl/role/index.vue'),
-        name: 'role',
+        path: "/acl/role",
+        component: () => import("@/views/acl/role/index.vue"),
+        name: "role",
         meta: {
-          title: '角色管理',
-          icon: 'Avatar',
+          title: "角色管理",
+          icon: "Avatar",
           hidden: false,
         },
       },
       {
-        path: '/acl/permission',
-        component: () => import('@/views/acl/permission/index.vue'),
-        name: 'permission',
+        path: "/acl/permission",
+        component: () => import("@/views/acl/permission/index.vue"),
+        name: "permission",
         meta: {
-          title: '菜单管理',
-          icon: 'List',
+          title: "菜单管理",
+          icon: "List",
           hidden: false,
         },
       },
     ],
   },
   {
-    path: '/product',
-    component: () => import('@/layout/index.vue'),
-    name: 'product',
+    path: "/product",
+    component: () => import("@/layout/index.vue"),
+    name: "product",
     meta: {
-      title: '商品管理',
-      icon: 'Goods',
+      title: "商品管理",
+      icon: "Goods",
       hidden: false,
     },
-    redirect: '/product/trademark',
+    redirect: "/product/trademark",
     children: [
       {
-        path: '/product/trademark',
-        component: () => import('@/views/product/trademark/index.vue'),
-        name: 'trademark',
+        path: "/product/trademark",
+        component: () => import("@/views/product/trademark/index.vue"),
+        name: "trademark",
         meta: {
-          title: '品牌管理',
-          icon: 'Shop',
+          title: "品牌管理",
+          icon: "Shop",
           hidden: false,
         },
       },
       {
-        path: '/product/attr',
-        component: () => import('@/views/product/attr/index.vue'),
-        name: 'attr',
+        path: "/product/attr",
+        component: () => import("@/views/product/attr/index.vue"),
+        name: "attr",
         meta: {
-          title: '属性管理',
-          icon: 'Management',
+          title: "属性管理",
+          icon: "Management",
           hidden: false,
         },
       },
       {
-        path: '/product/spu',
-        component: () => import('@/views/product/spu/index.vue'),
-        name: 'spu',
+        path: "/product/spu",
+        component: () => import("@/views/product/spu/index.vue"),
+        name: "spu",
         meta: {
-          title: 'SPU管理',
-          icon: 'Calendar',
+          title: "SPU管理",
+          icon: "Calendar",
           hidden: false,
         },
       },
       {
-        path: '/product/sku',
-        component: () => import('@/views/product/sku/index.vue'),
-        name: 'sku',
+        path: "/product/sku",
+        component: () => import("@/views/product/sku/index.vue"),
+        name: "sku",
         meta: {
-          title: 'SKU管理',
-          icon: 'ScaleToOriginal',
+          title: "SKU管理",
+          icon: "ScaleToOriginal",
           hidden: false,
         },
       },
     ],
   },
-]
+];
 
 /*
  * 必须拆任意路由 因为如果把任意路由放在公共常量路由中
@@ -165,13 +165,13 @@ export const asyncRoutes = [
 // 任意路由
 export const anyRoute = [
   {
-    path: '/:pathMatch(.*)*',
-    name: 'any',
-    redirect: '/404',
+    path: "/:pathMatch(.*)*",
+    name: "any",
+    redirect: "/404",
     meta: {
-      title: '其他页面',
+      title: "其他页面",
       hidden: true,
-      icon: '',
+      icon: "",
     },
   },
-]
+];

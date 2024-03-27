@@ -6,14 +6,20 @@
       alt="图片丢失了"
       title="点击返回首页"
       @click="router.push('./')"
-    />
+    >
   </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
-const router = useRouter()
+const router = useRouter();
+</script>
+
+<script lang="ts">
+export default {
+  name: "404",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -31,9 +37,3 @@ const router = useRouter()
   }
 }
 </style>
-
-<script lang="ts">
-export default {
-  name: '404',
-}
-</script>

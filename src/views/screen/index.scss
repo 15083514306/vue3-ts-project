@@ -5,7 +5,7 @@ $primary-color: #05e8fe;
   height: 100vh;
   background: url(assets/images/bg.png) no-repeat center;
   background-size: cover;
-  font-family: 'YouSheBiaoTiHei', Arial, sans-serif;
+  font-family: "YouSheBiaoTiHei", Arial, sans-serif;
 
   .screen-layout {
     position: fixed; // 使用fixed固定在正中间
@@ -15,7 +15,7 @@ $primary-color: #05e8fe;
     left: 50%;
     width: 1920px;
     height: 1080px;
-    transform-origin: left top;   // 障眼法缩放基点左上角 只在右下角方向伸缩
+    transform-origin: left top; // 障眼法缩放基点左上角 只在右下角方向伸缩
 
     // 数据大屏顶部
     .top {
@@ -23,23 +23,22 @@ $primary-color: #05e8fe;
       width: 100%;
       height: 38px;
 
-
       .top-left,
-      .top-right{
+      .top-right {
         flex: 1.5;
         height: 100%;
         background: url("assets/images/dataScreen-header-left-right-bg.png") no-repeat;
         background-size: 100% 100%;
       }
 
-      .top-center{
+      .top-center {
         flex: 2;
         width: 100%;
         height: 82px;
         background: url("assets/images/dataScreen-header-center-bg.png") no-repeat;
         background-size: 100% 100%;
 
-        .title{
+        .title {
           display: block;
           width: 100%;
           height: 82px;
@@ -53,12 +52,12 @@ $primary-color: #05e8fe;
       }
 
       .home,
-      .report{
+      .report {
         float: right;
         display: block;
         width: 136px;
         height: 42px;
-        color:$primary-color;
+        color: $primary-color;
         text-align: center;
         line-height: 42px;
         font-size: 18px;
@@ -68,12 +67,12 @@ $primary-color: #05e8fe;
         cursor: pointer;
       }
 
-      .report{
+      .report {
         float: left;
         background: url("assets/images/dataScreen-header-btn-bg-r.png") no-repeat;
       }
 
-      .cur-time{
+      .cur-time {
         float: right;
         margin-right: 44px;
         font-size: 17px;
@@ -81,7 +80,6 @@ $primary-color: #05e8fe;
         line-height: 38px;
         color: $primary-color;
       }
-
     }
 
     // 数据大屏主体
@@ -108,7 +106,6 @@ $primary-color: #05e8fe;
           height: 37%;
           background: url("assets/images/dataScreen-main-lt.png") no-repeat;
           background-size: cover;
-
         }
 
         .left-center {
@@ -185,14 +182,14 @@ $primary-color: #05e8fe;
       }
 
       //主体内所有标题和标题图片样式相同
-      .title{
+      .title {
         color: white;
         font-size: 18px;
         line-height: 16px;
         letter-spacing: 1px;
       }
 
-      .title-img{
+      .title-img {
         width: 68px;
         height: 7px;
         margin-top: 12px;

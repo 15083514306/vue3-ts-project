@@ -1,28 +1,40 @@
 <template>
-  <el-main class="main_layout" :class="{ isFold: settingStore.isFold }">
-    <router-view v-slot="{ Component }">
+  <ElMain
+    class="main_layout"
+    :class="{ isFold: settingStore.isFold }"
+  >
+    <RouterView v-slot="{ Component }">
       <!-- 此处用作用域插槽将{Component}组件传递给父组件供程序员使用 -->
-      <transition name="fade">
-        <component :is="Component" v-if="!settingStore.isRefresh" />
-      </transition>
-    </router-view>
-  </el-main>
+      <Transition name="fade">
+        <Component
+          :is="Component"
+          v-if="!settingStore.isRefresh"
+        />
+      </Transition>
+    </RouterView>
+  </ElMain>
 </template>
 
 <script setup lang="ts">
-import useSettingStore from '@/store/modules/setting'
-import { nextTick, watch } from 'vue'
+import useSettingStore from "@/store/modules/setting";
+import { nextTick, watch } from "vue";
 
-let settingStore = useSettingStore()
+let settingStore = useSettingStore();
 watch(
   () => settingStore.isRefresh,
   () => {
     nextTick(() => {
       //在下一次dom渲染更新的时候，也就是unmounted的时候 再让v-if开启
-      settingStore.isRefresh = false
-    })
-  },
-)
+      settingStore.isRefresh = false;
+    });
+  }
+);
+</script>
+
+<script lang="ts">
+export default {
+  name: "MainPage",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -56,9 +68,3 @@ watch(
   transform: scale(1);
 }
 </style>
-
-<script lang="ts">
-export default {
-  name: 'mainPage',
-}
-</script>

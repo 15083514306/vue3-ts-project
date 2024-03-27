@@ -1,54 +1,50 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import * as echarts from 'echarts'
-import { EChartsOption } from 'echarts'
+import { onMounted, ref } from "vue";
+import * as echarts from "echarts";
+import { EChartsOption } from "echarts";
 
-const annualLineChartRef = ref()
+const annualLineChartRef = ref();
 
 let annualData = [
   {
-    label: new Date().getFullYear() - 2 + '年',
-    value: new Array(12).fill('').map(() => Math.floor(Math.random() * 30000)),
+    label: new Date().getFullYear() - 2 + "年",
+    value: new Array(12).fill("").map(() => Math.floor(Math.random() * 30000)),
   },
   {
-    label: new Date().getFullYear() - 1 + '年',
-    value: new Array(12).fill('').map(() => Math.floor(Math.random() * 30000)),
+    label: new Date().getFullYear() - 1 + "年",
+    value: new Array(12).fill("").map(() => Math.floor(Math.random() * 30000)),
   },
   {
-    label: new Date().getFullYear() + '年',
-    value: new Array(12).fill('').map(() => Math.floor(Math.random() * 30000)),
+    label: new Date().getFullYear() + "年",
+    value: new Array(12).fill("").map(() => Math.floor(Math.random() * 30000)),
   },
-]
+];
 
-const gradientColors = [
-  'rgba(254, 219, 101,0.1)',
-  'rgba(0, 122, 254,0.1)',
-  'rgba(255, 75, 122, 0.1)',
-]
+const gradientColors = ["rgba(254, 219, 101,0.1)", "rgba(0, 122, 254,0.1)", "rgba(255, 75, 122, 0.1)"];
 
-const colors = ['#FFA600', '#007AFE', '#FF4B7A']
+const colors = ["#FFA600", "#007AFE", "#FF4B7A"];
 
 const option: EChartsOption = {
   legend: {
-    right: '2%',
-    top: '6%',
+    right: "2%",
+    top: "6%",
     itemWidth: 15,
     itemHeight: 6,
-    align: 'auto',
-    icon: 'rect',
+    align: "auto",
+    icon: "rect",
     itemGap: 15,
     textStyle: {
-      color: '#ebebf0',
+      color: "#ebebf0",
     },
   },
   grid: {
-    top: '20%',
-    left: '15%',
-    right: '10%',
-    bottom: '20%',
+    top: "20%",
+    left: "15%",
+    right: "10%",
+    bottom: "20%",
   },
   xAxis: {
-    type: 'category',
+    type: "category",
     boundaryGap: false,
     data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     splitLine: {
@@ -58,30 +54,30 @@ const option: EChartsOption = {
       show: false,
     },
     axisLabel: {
-      color: '#7ec7ff',
+      color: "#7ec7ff",
       fontSize: 16,
     },
     axisLine: {
       show: true,
       onZero: true,
-      symbol: ['none', 'arrow'],
+      symbol: ["none", "arrow"],
       symbolOffset: [0, 30],
       lineStyle: {
-        color: '#233653',
+        color: "#233653",
         shadowOffsetX: 20,
-        shadowColor: '#233653',
+        shadowColor: "#233653",
       },
     },
   },
   yAxis: {
-    name: '(人数)',
+    name: "(人数)",
     nameGap: 16,
     nameTextStyle: {
-      color: '#7ec7ff',
+      color: "#7ec7ff",
       fontSize: 16,
       padding: [0, 30, -4, 0],
     },
-    type: 'value',
+    type: "value",
     axisTick: {
       show: false,
     },
@@ -91,37 +87,30 @@ const option: EChartsOption = {
     axisLine: {
       show: true,
       lineStyle: {
-        color: '#233653',
+        color: "#233653",
       },
     },
     axisLabel: {
-      color: '#7ec7ff',
+      color: "#7ec7ff",
       fontSize: 16,
-      formatter: (name: any) =>
-        Number(name) >= 10000 ? Number(name) / 10000 + 'w' : name,
+      formatter: (name: any) => (Number(name) >= 10000 ? Number(name) / 10000 + "w" : name),
     },
   },
   tooltip: {
     show: true,
-    trigger: 'axis',
+    trigger: "axis",
     confine: true,
     formatter: (params: any) => {
-      let str = ''
+      let str = "";
       params.forEach((item: any) => {
         str += `
           <div class="year-item">
-            <span class="year-dot" style="background-color: ${
-              item.color
-            };"></span>
+            <span class="year-dot" style="background-color: ${item.color};"></span>
             <span class="year-name">${item.seriesName}</span>
-            <span class="year-value">${
-              item.data >= 10000
-                ? (item.data / 10000).toFixed(2) + 'w'
-                : item.data
-            }人次</span>
+            <span class="year-value">${item.data >= 10000 ? (item.data / 10000).toFixed(2) + "w" : item.data}人次</span>
           </div>
-          `
-      })
+          `;
+      });
       return `
           <div class="annual-tooTip">
             <span class="annual-month">${params[0].dataIndex + 1}月</span>
@@ -129,21 +118,21 @@ const option: EChartsOption = {
               ${str}
             </div>
           </div>
-                  `
+                  `;
     },
-    backgroundColor: 'transparent', // 提示标签背景颜色
-    borderColor: 'transparent',
-    extraCssText: 'box-shadow: none;padding:0',
+    backgroundColor: "transparent", // 提示标签背景颜色
+    borderColor: "transparent",
+    extraCssText: "box-shadow: none;padding:0",
   },
   series: annualData.map((item, index) => {
     return {
       name: item.label,
       data: item.value,
-      type: 'line',
+      type: "line",
       smooth: true,
       showSymbol: false,
       emphasis: {
-        focus: 'series',
+        focus: "series",
       },
       lineStyle: {
         width: 1,
@@ -155,7 +144,7 @@ const option: EChartsOption = {
           // 线性渐变，前四个参数分别是 x0, y0, x2, y2, 范围从 0 - 1，
           // 相当于在图形包围盒中的百分比，如果 globalCoord 为 `true`，
           // 则该四个值是绝对的像素位置
-          type: 'linear',
+          type: "linear",
           x: 0,
           y: 0,
           x2: 0,
@@ -171,17 +160,17 @@ const option: EChartsOption = {
             },
           ],
         },
-        shadowColor: 'rgba(255, 199, 37, 0)', // 阴影颜色
+        shadowColor: "rgba(255, 199, 37, 0)", // 阴影颜色
         shadowBlur: 20, // shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
       },
-    }
+    };
   }),
-}
+};
 
 onMounted(() => {
-  const chart = echarts.init(annualLineChartRef.value)
-  chart.setOption(option)
-})
+  const chart = echarts.init(annualLineChartRef.value);
+  chart.setOption(option);
+});
 </script>
 
 <template>
@@ -190,9 +179,12 @@ onMounted(() => {
     class="title-img"
     src="../assets/images/dataScreen-title.png"
     alt="title-img"
-  />
+  >
   <div class="main-chart-content">
-    <div class="annualLineChart" ref="annualLineChartRef"></div>
+    <div
+      ref="annualLineChartRef"
+      class="annualLineChart"
+    />
   </div>
 </template>
 
@@ -212,7 +204,7 @@ onMounted(() => {
       width: 206px;
       height: 103px;
       padding: 5px 20px;
-      background: url('../assets/images/contrast-bg.png') no-repeat;
+      background: url("../assets/images/contrast-bg.png") no-repeat;
       background-size: 100% 100%;
 
       .annual-month {

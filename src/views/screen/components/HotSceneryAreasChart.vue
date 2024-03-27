@@ -1,59 +1,54 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import * as echarts from 'echarts'
-import { EChartsOption } from 'echarts'
-import {
-  ranking1,
-  ranking2,
-  ranking3,
-  ranking4,
-} from '@/assets/images/ranking.ts'
+import { onMounted, ref } from "vue";
+import * as echarts from "echarts";
+import { EChartsOption } from "echarts";
+import { ranking1, ranking2, ranking3, ranking4 } from "@/assets/images/ranking.ts";
 
-const colors = ['#1089E7', '#F57474', '#56D0E3', '#F8B448', '#8B78F6']
+const colors = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
 const data = ref([
   {
     value: 79999,
-    name: '峨眉山',
-    percentage: '80%',
+    name: "峨眉山",
+    percentage: "80%",
     maxValue: 100000,
   },
   {
     value: 59999,
-    name: '稻城亚丁',
-    percentage: '60%',
+    name: "稻城亚丁",
+    percentage: "60%",
     maxValue: 100000,
   },
   {
     value: 49999,
-    name: '九寨沟',
-    percentage: '50%',
+    name: "九寨沟",
+    percentage: "50%",
     maxValue: 100000,
   },
   {
     value: 39999,
-    name: '万里长城',
-    percentage: '40%',
+    name: "万里长城",
+    percentage: "40%",
     maxValue: 100000,
   },
   {
     value: 29999,
-    name: '北京故宫',
-    percentage: '30%',
+    name: "北京故宫",
+    percentage: "30%",
     maxValue: 100000,
   },
-])
+]);
 
-const hotSceneryChartRef = ref()
+const hotSceneryChartRef = ref();
 const option: EChartsOption = {
   grid: {
-    top: '0',
-    left: '7%',
-    right: '4%',
-    bottom: '1%',
+    top: "0",
+    left: "7%",
+    right: "4%",
+    bottom: "1%",
     containLabel: true,
   },
   xAxis: {
-    type: 'value',
+    type: "value",
     splitLine: {
       show: false,
     },
@@ -72,14 +67,11 @@ const option: EChartsOption = {
         show: false,
       },
       axisLabel: {
-        color: '#fff',
+        color: "#fff",
         formatter: (value: any) => {
-          let str = value.length > 6 ? value.slice(0, 6) + '...' : value //文本过长处理
-          let index = data.value.map((item) => item.name).indexOf(value) + 1
-          return [
-            '{' + (index > 3 ? 'lg' : 'lg' + index) + '|NO.' + index + '}',
-            '{title|' + str + '}',
-          ].join(' ')
+          let str = value.length > 6 ? value.slice(0, 6) + "..." : value; //文本过长处理
+          let index = data.value.map((item) => item.name).indexOf(value) + 1;
+          return ["{" + (index > 3 ? "lg" : "lg" + index) + "|NO." + index + "}", "{title|" + str + "}"].join(" ");
         },
         rich: {
           lg1: {
@@ -87,8 +79,8 @@ const option: EChartsOption = {
             backgroundColor: {
               image: ranking1,
             },
-            color: '#fff',
-            align: 'center',
+            color: "#fff",
+            align: "center",
             height: 20,
             fontSize: 13,
           },
@@ -97,8 +89,8 @@ const option: EChartsOption = {
             backgroundColor: {
               image: ranking2,
             },
-            color: '#fff',
-            align: 'center',
+            color: "#fff",
+            align: "center",
 
             height: 20,
             fontSize: 13,
@@ -108,8 +100,8 @@ const option: EChartsOption = {
             backgroundColor: {
               image: ranking3,
             },
-            color: '#fff',
-            align: 'center',
+            color: "#fff",
+            align: "center",
             height: 20,
             fontSize: 13,
           },
@@ -118,8 +110,8 @@ const option: EChartsOption = {
             backgroundColor: {
               image: ranking4,
             },
-            color: '#fff',
-            align: 'center',
+            color: "#fff",
+            align: "center",
 
             height: 20,
             fontSize: 13,
@@ -127,7 +119,7 @@ const option: EChartsOption = {
           title: {
             width: 60,
             fontSize: 13,
-            align: 'center',
+            align: "center",
             padding: [0, 10, 0, 15],
           },
         },
@@ -139,10 +131,10 @@ const option: EChartsOption = {
       data: data.value,
       axisLabel: {
         fontSize: 14,
-        color: '#fff',
+        color: "#fff",
         margin: 20,
         formatter: (value: any) => {
-          return value >= 10000 ? (value / 10000).toFixed(2) + 'w' : value
+          return value >= 10000 ? (value / 10000).toFixed(2) + "w" : value;
         },
       },
       axisLine: {
@@ -159,50 +151,50 @@ const option: EChartsOption = {
   ],
   series: [
     {
-      name: '条',
-      type: 'bar',
+      name: "条",
+      type: "bar",
       data: data.value,
       barWidth: 12,
       itemStyle: {
         borderRadius: 30,
         color: (params) => {
-          return colors[params.dataIndex % colors.length]
+          return colors[params.dataIndex % colors.length];
         },
       },
       label: {
         show: true,
         position: [12, 0],
         lineHeight: 14,
-        color: '#fff',
+        color: "#fff",
         formatter: (params: any) => params.data.percentage,
       },
     },
     {
-      name: '框',
-      type: 'bar',
+      name: "框",
+      type: "bar",
       yAxisIndex: 1,
       data: data.value.map((val) => {
         if (!val.maxValue) {
-          return 5
+          return 5;
         }
-        return val.maxValue
+        return val.maxValue;
       }),
       barWidth: 18,
       itemStyle: {
-        color: 'none',
-        borderColor: '#00c1de',
+        color: "none",
+        borderColor: "#00c1de",
         borderWidth: 1,
         borderRadius: 15,
       },
       silent: true,
     },
   ],
-}
+};
 
 onMounted(() => {
-  const chart = echarts.init(hotSceneryChartRef.value)
-  chart.setOption(option)
-})
+  const chart = echarts.init(hotSceneryChartRef.value);
+  chart.setOption(option);
+});
 </script>
 
 <template>
@@ -211,14 +203,17 @@ onMounted(() => {
     class="title-img"
     src="../assets/images/dataScreen-title.png"
     alt="title-img"
-  />
+  >
   <div class="main-chart-content">
     <div class="echarts-header">
       <span>排名</span>
       <span>景区</span>
       <span>预约数量</span>
     </div>
-    <div class="hotSceneryRatioChart" ref="hotSceneryChartRef"></div>
+    <div
+      ref="hotSceneryChartRef"
+      class="hotSceneryRatioChart"
+    />
   </div>
 </template>
 
@@ -234,7 +229,7 @@ onMounted(() => {
     width: 100%;
     margin: 16px 2px 0 2px;
     line-height: 36px;
-    background: url('../assets/images/rankingChart-bg.png') no-repeat;
+    background: url("../assets/images/rankingChart-bg.png") no-repeat;
     background-size: 100% 100%;
     span {
       width: 18%;

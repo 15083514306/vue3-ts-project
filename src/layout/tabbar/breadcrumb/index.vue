@@ -1,38 +1,45 @@
 <template>
   <!-- 折叠侧边栏图标 -->
-  <el-icon class="fold-icon" @click="foldHandler">
-    <component :is="settingStore.isFold ? 'Expand' : 'Fold'"></component>
-  </el-icon>
+  <ElIcon
+    class="fold-icon"
+    @click="foldHandler"
+  >
+    <Component :is="settingStore.isFold ? 'Expand' : 'Fold'" />
+  </ElIcon>
   <!-- 面包屑 -->
-  <el-breadcrumb class="breadcrumb" separator-icon="ArrowRight" separator="/">
-    <el-breadcrumb-item
+  <ElBreadcrumb
+    class="breadcrumb"
+    separator-icon="ArrowRight"
+    separator="/"
+  >
+    <ElBreadcrumbItem
       v-for="(item, index) in $route.matched"
-      :key="index"
       v-show="item.meta.title"
+      :key="index"
       :to="item.path"
     >
       <!-- 首页是二级路由中只有一个，要用v-show特殊处理 不能用v-if 优先级比v-for高 -->
-      <el-icon class="breadcrumb-icon">
-        <component :is="item.meta.icon"></component>
-      </el-icon>
+      <ElIcon class="breadcrumb-icon">
+        <Component :is="item.meta.icon" />
+      </ElIcon>
       <span class="breadcrumb-title">{{ item.meta.title }}</span>
-    </el-breadcrumb-item>
-  </el-breadcrumb>
+    </ElBreadcrumbItem>
+  </ElBreadcrumb>
 </template>
 
 <script setup lang="ts">
-import useSettingStore from '@/store/modules/setting'
-let settingStore = useSettingStore()
+import useSettingStore from "@/store/modules/setting";
+let settingStore = useSettingStore();
 const foldHandler = () => {
-  settingStore.isFold = !settingStore.isFold
+  settingStore.isFold = !settingStore.isFold;
   // localStorage.setItem('isFold', settingStore.isFold.toString())
-}
+};
 </script>
 
 <script lang="ts">
 export default {
-  name: 'breadcrumb',
-}
+  name: "Breadcrumb",
+};
 </script>
 
 <style lang="scss" scoped>

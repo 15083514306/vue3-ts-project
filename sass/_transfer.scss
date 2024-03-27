@@ -5,7 +5,7 @@
 @use "../sass/foo" as f;
 @use "../sass/common" as c;
 
-.transfer{
+.transfer {
   width: c.$width;
   height: 200px;
   color: f.$color;

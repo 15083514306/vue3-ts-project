@@ -1,6 +1,12 @@
 <template>
-  <svg class="icon" :style="{ width, height }">
-    <use :xlink:href="`#icon-${name}`" :fill="color"></use>
+  <svg
+    class="icon"
+    :style="{ width, height }"
+  >
+    <use
+      :xlink:href="`#icon-${name}`"
+      :fill="color"
+    />
   </svg>
 </template>
 
@@ -8,25 +14,25 @@
 defineProps({
   name: {
     type: String,
-    default: '',
+    default: "",
   },
   color: {
     type: String,
-    default: '',
+    default: "",
   },
   width: {
     type: String,
-    default: '16px',
+    default: "16px",
   },
   height: {
     type: String,
-    default: '16px',
+    default: "16px",
   },
-})
+});
 </script>
 
 <script lang="ts">
 export default {
-  name: 'svgIcon',
-}
+  name: "SvgIcon",
+};
 </script>

@@ -1,150 +1,177 @@
 <template>
-  <el-form 
-    :model="data" 
-  >
+  <ElForm :model="data">
     <h1>{{ title }}</h1>
-    <el-row :gutter="10">
+    <ElRow :gutter="10">
       <template
-        v-for="item in config" 
-        :key="item.key" 
+        v-for="item in config"
+        :key="item.key"
       >
-        <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4">
-          <el-form-item 
+        <ElCol
+          :xs="24"
+          :sm="12"
+          :md="8"
+          :lg="6"
+          :xl="4"
+        >
+          <ElFormItem
             :label="item.label"
             v-bind="item?.formOption"
           >
-            <el-select 
-              v-if="item.type === 'el-select'" 
+            <ElSelect
+              v-if="item.type === 'el-select'"
               v-model="data[item.key]"
               :placeholder="placeholder"
               v-bind="item?.formItemOption"
             >
-              <el-option
-                v-for="sl in item.childOptions" 
-                :key="sl.value" 
-                :label="sl.label" 
+              <ElOption
+                v-for="sl in item.childOptions"
+                :key="sl.value"
+                :label="sl.label"
                 :value="sl.value"
               />
-            </el-select>
+            </ElSelect>
 
-            <el-date-picker
+            <ElDatePicker
               v-else-if="item.type === 'el-date-picker'"
-              type="date-picker"
               v-model="data[item.key]"
+              type="date-picker"
               :placeholder="placeholder"
               v-bind="item?.formItemOption"
             />
-    
-            <el-time-picker
+
+            <ElTimePicker
               v-else-if="item.type === 'el-time-picker'"
               v-model="data[item.key]"
               :placeholder="placeholder"
               v-bind="item?.formItemOption"
             />
-    
-            <el-switch
+
+            <ElSwitch
               v-else-if="item.type === 'el-switch'"
               v-model="data[item.key]"
               :placeholder="placeholder"
               v-bind="item?.formItemOption"
             />
-    
-            <el-checkbox-group
+
+            <ElCheckboxGroup
               v-else-if="item.type === 'el-checkbox-group'"
               v-model="data[item.key]"
               :placeholder="placeholder"
               v-bind="item?.formItemOption"
             >
-              <el-checkbox label="Online activities" name="type" />
-              <el-checkbox label="Promotion activities" name="type" />
-              <el-checkbox label="Offline activities" name="type" />
-              <el-checkbox label="Simple brand exposure" name="type" />
-            </el-checkbox-group>
-    
-            <el-radio-group
+              <ElCheckbox
+                label="Online activities"
+                name="type"
+              />
+              <ElCheckbox
+                label="Promotion activities"
+                name="type"
+              />
+              <ElCheckbox
+                label="Offline activities"
+                name="type"
+              />
+              <ElCheckbox
+                label="Simple brand exposure"
+                name="type"
+              />
+            </ElCheckboxGroup>
+
+            <ElRadioGroup
               v-else-if="item.type === 'el-radio-group'"
               v-model="data[item.key]"
               :placeholder="placeholder"
               v-bind="item?.formItemOption"
             >
-              <el-radio label="Sponsor" />
-              <el-radio label="Venue" />
-            </el-radio-group>
-    
-            <el-input 
-              v-else-if="item.type === 'el-input'" 
+              <ElRadio label="Sponsor" />
+              <ElRadio label="Venue" />
+            </ElRadioGroup>
+
+            <ElInput
+              v-else-if="item.type === 'el-input'"
               v-model="data[item.key]"
               :placeholder="placeholder"
               v-bind="item?.formItemOption"
             />
 
-            <div v-else >请检查form配置</div>
-    
-          </el-form-item>
-        </el-col>
-
+            <div v-else>
+              请检查form配置
+            </div>
+          </ElFormItem>
+        </ElCol>
       </template>
-      
-      <el-col :span="6">
+
+      <ElCol :span="6">
         <slot name="serch">
-          <el-button type="danger" @click="onClear">重置</el-button>
-          <el-dropdown 
-            split-button 
+          <ElButton
+            type="danger"
+            @click="onClear"
+          >
+            重置
+          </ElButton>
+          <ElDropdown
+            split-button
             type="primary"
-            style="margin-left:10px"
+            style="margin-left: 10px"
             @click="onSubmit"
           >
             查询
             <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>
-                  <el-button @click="onClear">Action 1</el-button>
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <el-button @click="onClear">Action 2</el-button>
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <el-button @click="onClear">Action 3</el-button>
-                </el-dropdown-item>
-              </el-dropdown-menu>
+              <ElDropdownMenu>
+                <ElDropdownItem>
+                  <ElButton @click="onClear">
+                    Action 1
+                  </ElButton>
+                </ElDropdownItem>
+                <ElDropdownItem>
+                  <ElButton @click="onClear">
+                    Action 2
+                  </ElButton>
+                </ElDropdownItem>
+                <ElDropdownItem>
+                  <ElButton @click="onClear">
+                    Action 3
+                  </ElButton>
+                </ElDropdownItem>
+              </ElDropdownMenu>
             </template>
-          </el-dropdown>
+          </ElDropdown>
         </slot>
-      </el-col>
-    </el-row>
-  </el-form>
+      </ElCol>
+    </ElRow>
+  </ElForm>
 </template>
 
 <script lang="ts" setup>
-import { toRefs } from 'vue'
-import { IAny, IFromConfig } from './type'
+import { toRefs } from "vue";
+import { IAny, IFromConfig } from "./type";
 
-const placeholder:string = '请输入...'
+const placeholder = "请输入...";
 
-interface IProps{
-  data:IAny,
-  config:IFromConfig[],
-  title:string
+interface IProps {
+  data: IAny;
+  config: IFromConfig[];
+  title: string;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  title:'标题....',
-})
-let { data, config} = toRefs(props)
+  title: "标题....",
+});
+let { data, config } = toRefs(props);
 const $emit = defineEmits<{
-  success:[data:IAny],
-  clear:[data:IAny],
-}>()
+  success: [data: IAny];
+  clear: [data: IAny];
+}>();
 
 const onSubmit = () => {
-  $emit('success',props.data)
-}
+  $emit("success", props.data);
+};
 const onClear = () => {
-  data.value = {}
-}
+  data.value = {};
+};
 </script>
 <style scoped>
-    .el-select{
-      width: 100%;
-    }
+.el-select {
+  width: 100%;
+}
 </style>

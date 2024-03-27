@@ -1,24 +1,24 @@
 <template>
-  <el-container class="layout-container">
+  <ElContainer class="layout-container">
     <!-- 侧边栏 -->
-    <Slider></Slider>
+    <Slider />
     <!-- 顶部导航栏 -->
-    <Tabbar></Tabbar>
+    <Tabbar />
     <!-- 内容展示区域 -->
-    <Main></Main>
-  </el-container>
+    <Main />
+  </ElContainer>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'layout',
-}
+  name: "Layout",
+};
 </script>
 
 <script setup lang="ts">
-import Slider from '@/layout/slider/index.vue'
-import Tabbar from '@/layout/tabbar/index.vue'
-import Main from '@/layout/main/index.vue'
+import Slider from "@/layout/slider/index.vue";
+import Tabbar from "@/layout/tabbar/index.vue";
+import Main from "@/layout/main/index.vue";
 </script>
 
 <style lang="scss" scoped>
